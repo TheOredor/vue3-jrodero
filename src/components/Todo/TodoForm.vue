@@ -1,24 +1,17 @@
 <script setup lang="ts">
-import type { TodoItemClass } from '../classes/TodoItemClass';
 import { ref, type Ref } from 'vue';
+import { TodoItemClass } from '../classes/TodoItemClass';
 
 const newTask: Ref<string> = ref('');
 
-const emit = defineEmits({
-    addTask: (payload: TodoItemClass) => {
-        return payload === undefined;
-    }
-})
+const emit = defineEmits<{
+    (e: 'addTask', payload: TodoItemClass): void
+}>();
 
 function createNewTodo(e: Event) {
     e.preventDefault();
 
-    const newTodo: TodoItemClass = {
-        id: Date.now(),
-        task: newTask.value,
-        done: false
-    };
-    emit('addTask', newTodo);
+    emit('addTask', new TodoItemClass(Date.now(), newTask.value, false));
     newTask.value = '';
 }
 </script>

@@ -1,19 +1,15 @@
 <script setup lang="ts">
+import TodoForm from './Todo/TodoForm.vue';
+import TodoItem from './Todo/TodoItem.vue';
+import { TodoItemClass } from './classes/TodoItemClass';
 
-import TodoItem from './Todo/TodoItem.vue'
-import TodoForm from './Todo/TodoForm.vue'
-import type { TodoItemClass } from './classes/TodoItemClass.ts';
-
-
-defineProps<{
+const props = defineProps({
     todos: Array<TodoItemClass>
-}>()
-
-const emit = defineEmits({
-    addTask: (payload: TodoItemClass) => {
-        return payload === undefined;
-    }
 });
+
+const emit = defineEmits<{
+    (e: 'addTask', payload: TodoItemClass): void
+}>();
 
 function handleAddTask(todo: TodoItemClass) {
     emit('addTask', todo);
@@ -23,7 +19,5 @@ function handleAddTask(todo: TodoItemClass) {
 <template>
     <TodoForm @add-task="handleAddTask"></TodoForm>
     <hr style="margin: 1rem">
-    <div v-for="todo in todos">
-        <TodoItem :todo="todo"></TodoItem>
-    </div>
+    <TodoItem v-for="todo in props.todos" :todo="todo" />
 </template>

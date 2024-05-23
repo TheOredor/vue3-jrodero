@@ -1,18 +1,24 @@
 <script setup lang="ts">
-import Todo from './components/Todo.vue'
+import { ref, type Ref } from 'vue';
+import Todo from './components/Todo.vue';
 import TodoHeader from './components/TodoHeader.vue';
-import type { TodoItemClass } from './components/classes/TodoItemClass';
+import { TodoItemClass } from './components/classes/TodoItemClass';
 
-const todos: Array<TodoItemClass> = [
-    { id: 1, task: 'task1 task1', done: false },
-    { id: 2, task: 'task2 task2', done: true },
-    { id: 3, task: 'task3 task3', done: false }
-];
+
+// const todos: Array<TodoItemClass> = [
+//     new TodoItemClass(1, 'task1 task1', true),
+//     new TodoItemClass(2, 'task2 task2', false),
+//     new TodoItemClass(3, 'task3 task3', false)
+// ];
+const todos: Ref<Array<TodoItemClass>> = ref([
+    new TodoItemClass(1, 'task1 task1', true),
+    new TodoItemClass(2, 'task2 task2', false),
+    new TodoItemClass(3, 'task3 task3', false)
+]);
 
 function handleAddTask(todo: TodoItemClass) {
-    console.log(todo);
-    todos.push(todo);
-    console.log(todos);
+    // todos.push(todo);
+    todos.value.push(todo);
 }
 </script>
 
