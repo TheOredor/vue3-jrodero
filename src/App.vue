@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Todos from './components/Todos.vue'
+import Todo from './components/Todo.vue'
 import TodoHeader from './components/TodoHeader.vue';
 import type { TodoItemClass } from './components/classes/TodoItemClass';
 
@@ -26,6 +26,6 @@ function handleAddTask(todo: TodoItemClass) {
     </header>
 
     <main>
-        <Todos :todos="todos" @add-task="handleAddTask"></Todos>
+        <Todo :todos="todos" @add-task="handleAddTask"></Todo>
     </main>
 </template>
