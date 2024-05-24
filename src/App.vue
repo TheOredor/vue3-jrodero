@@ -41,6 +41,7 @@ function handleDeleteTask(idTodo: Number) {
     </header>
 
     <main>
-        <Todo :todos="todos" @add-task="handleAddTask" @change-task-status="handleChangeTaskStatus" @delete-task="handleDeleteTask"></Todo>
+        <Todo :todos="todos" @add-task="handleAddTask" @change-task-status="handleChangeTaskStatus"
+            @delete-task="handleDeleteTask"></Todo>
     </main>
 </template>

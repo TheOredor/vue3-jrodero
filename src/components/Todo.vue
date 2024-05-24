@@ -29,5 +29,6 @@ function handleDeleteTask(idTodo: Number) {
 <template>
     <TodoForm @add-task="handleAddTask"></TodoForm>
     <hr style="margin: 1rem">
-    <TodoItem v-for="todo in props.todos" :todo="todo" @change-task-status="handleChangeTaskStatus" @delete-task="handleDeleteTask"/>
+    <TodoItem v-for="todo in props.todos" :todo="todo" @change-task-status="handleChangeTaskStatus"
+        @delete-task="handleDeleteTask" />
 </template>
