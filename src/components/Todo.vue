@@ -8,16 +8,26 @@ const props = defineProps({
 });
 
 const emit = defineEmits<{
-    (e: 'addTask', payload: TodoItemClass): void
+    (e: 'addTask', payload: TodoItemClass): void,
+    (e: 'changeTaskStatus', payload: TodoItemClass): void
+    (e: 'deleteTask', payload: Number): void,
 }>();
 
 function handleAddTask(todo: TodoItemClass) {
     emit('addTask', todo);
+}
+
+function handleChangeTaskStatus(todo: TodoItemClass) {
+    emit('changeTaskStatus', todo);
+}
+
+function handleDeleteTask(idTodo: Number) {
+    emit('deleteTask', idTodo);
 }
 </script>
 
 <template>
     <TodoForm @add-task="handleAddTask"></TodoForm>
     <hr style="margin: 1rem">
-    <TodoItem v-for="todo in props.todos" :todo="todo" />
+    <TodoItem v-for="todo in props.todos" :todo="todo" @change-task-status="handleChangeTaskStatus" @delete-task="handleDeleteTask"/>
 </template>

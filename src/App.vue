@@ -20,6 +20,15 @@ function handleAddTask(todo: TodoItemClass) {
     // todos.push(todo);
     todos.value.push(todo);
 }
+
+function handleChangeTaskStatus(todo: TodoItemClass) {
+    todo.done = !todo.done;
+}
+
+function handleDeleteTask(idTodo: Number) {
+    const index = todos.value.findIndex(todo => todo.id === idTodo);
+    todos.value.splice(index, 1);
+}
 </script>
 
 <template>
@@ -32,6 +41,6 @@ function handleAddTask(todo: TodoItemClass) {
     </header>
 
     <main>
-        <Todo :todos="todos" @add-task="handleAddTask"></Todo>
+        <Todo :todos="todos" @add-task="handleAddTask" @change-task-status="handleChangeTaskStatus" @delete-task="handleDeleteTask"></Todo>
     </main>
 </template>
