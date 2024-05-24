@@ -10,7 +10,7 @@ const props = defineProps({
 const emit = defineEmits<{
     (e: 'addTask', payload: TodoItemClass): void,
     (e: 'changeTaskStatus', payload: TodoItemClass): void
-    (e: 'deleteTask', payload: Number): void,
+    (e: 'deleteTask', payload: number): void,
 }>();
 
 function handleAddTask(todo: TodoItemClass) {
@@ -21,7 +21,7 @@ function handleChangeTaskStatus(todo: TodoItemClass) {
     emit('changeTaskStatus', todo);
 }
 
-function handleDeleteTask(idTodo: Number) {
+function handleDeleteTask(idTodo: number) {
     emit('deleteTask', idTodo);
 }
 </script>

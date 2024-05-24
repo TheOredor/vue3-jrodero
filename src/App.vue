@@ -5,9 +5,9 @@ import TodoHeader from './components/TodoHeader.vue';
 import { TodoItemClass } from './components/classes/TodoItemClass';
 
 const todos: Ref<Array<TodoItemClass>> = ref([
-    new TodoItemClass(1, 'task1 task1', true),
-    new TodoItemClass(2, 'task2 task2', false),
-    new TodoItemClass(3, 'task3 task3', false)
+    // new TodoItemClass(1, 'task1 task1', true),
+    // new TodoItemClass(2, 'task2 task2', false),
+    // new TodoItemClass(3, 'task3 task3', false)
 ]);
 
 function handleAddTask(todo: TodoItemClass) {
@@ -18,7 +18,7 @@ function handleChangeTaskStatus(todo: TodoItemClass) {
     todo.done = !todo.done;
 }
 
-function handleDeleteTask(idTodo: Number) {
+function handleDeleteTask(idTodo: number) {
     const index = todos.value.findIndex(todo => todo.id === idTodo);
     todos.value.splice(index, 1);
 }

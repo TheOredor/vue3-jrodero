@@ -9,7 +9,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits<{
-    (e: 'deleteTask', payload: Number): void
+    (e: 'deleteTask', payload: number): void
     (e: 'changeTaskStatus', payload: TodoItemClass): void
 }>();
 
