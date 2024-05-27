@@ -1,14 +1,26 @@
 <script setup lang="ts">
-import { ref, type Ref, computed, type ComputedRef } from 'vue';
+import { ref, type Ref, computed, type ComputedRef, watch } from 'vue';
 import TodoManager from './components/TodoManager.vue';
 import HeaderApp from './components/Header.vue';
 import { TodoItemClass } from './components/classes/TodoItemClass';
 
-const todos: Ref<Array<TodoItemClass>> = ref([]);
+const todos: Ref<Array<TodoItemClass>> = ref(JSON.parse(localStorage.getItem('todoList') || '[]'));
 const title: Ref<string> = ref('Vue3 JRodero Todo list');
-const completeTodos: ComputedRef<number> = computed(() => {
+
+const completedTodos: ComputedRef<number> = computed(() => {
     return todos.value.filter(todo => todo.done).length;
 });
+
+watch(todos.value, () => {
+    localStorage.setItem('todoList', JSON.stringify(todos.value));
+
+    if (todos.value.length == 0 || (todos.value.length == completedTodos.value)) {
+        document.title = 'Vite App';
+    } else {
+        document.title = `(${todos.value.length - completedTodos.value}) Vite App`;
+    }
+}, { deep: true, immediate: true }
+);
 
 function handleAddTask(todo: TodoItemClass) {
     todos.value.push(todo);
@@ -29,7 +41,7 @@ function handleDeleteTask(idTodo: number) {
         <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
         <div class="wrapper">
-            <HeaderApp :title="title" :completeTodos="completeTodos" :todosLength="todos.length" />
+            <HeaderApp :title="title" :completedTodos="completedTodos" :todosLength="todos.length" />
         </div>
     </header>
 

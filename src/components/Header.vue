@@ -6,7 +6,7 @@ const props = defineProps({
         type: String,
         required: true
     },
-    completeTodos: {
+    completedTodos: {
         type: Number,
         required: true,
     },
@@ -24,14 +24,15 @@ const props = defineProps({
             This is a proyect for learn Vue3.
         </small>
         <ul>
-            <li v-if="props.todosLength <= 0">You dont have task to make.</li>
-            <li v-else-if="props.todosLength == 1 && props.completeTodos <= 0">
+            <li v-if="props.todosLength == 0">You dont have task to make.</li>
+            <li v-else-if="props.todosLength == 1 && props.completedTodos == 0">
                 You have not completed your task.
             </li>
             <li v-else-if="props.todosLength == 1">
                 You have completed your task
             </li>
-            <li v-else>You have {{ props.completeTodos }} tasks completed out of {{ props.todosLength }} tasks.</li>
+            <li v-else-if="props.todosLength == props.completedTodos">You completed all your tasks.</li>
+            <li v-else>You have {{ props.completedTodos }} tasks completed out of {{ props.todosLength }} tasks.</li>
         </ul>
         <!-- <pre>{{ props }}</pre> -->
     </div>
