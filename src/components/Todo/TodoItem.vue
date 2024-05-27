@@ -26,8 +26,9 @@ function deleteTask(e: Event) {
 
 <template>
     <article>
-        <input type="checkbox" name="todoDone" id="todoDone" :checked="props.todo.done" @change="changeTask">
-        <label for="todoDone" :style="{ textDecoration: props.todo.done ? 'line-through' : 'none' }">
+        <input type="checkbox" :name="String(props.todo.id)" :id="String(props.todo.id)" :checked="props.todo.done"
+            @change="changeTask">
+        <label :for="String(props.todo.id)" :style="{ textDecoration: props.todo.done ? 'line-through' : 'none' }">
             {{ props.todo.task }}
         </label>
         <button type="button" @click="deleteTask" class="green">
