@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { TodoItemClass } from './classes/TodoItemClass';
 
 const props = defineProps({
     title: {
