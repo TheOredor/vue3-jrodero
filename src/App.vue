@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, type Ref, computed, type ComputedRef, watch } from 'vue';
-import TodoManager from './components/TodoManager.vue';
+import { computed, ref, watch, type ComputedRef, type Ref } from 'vue';
 import HeaderApp from './components/Header.vue';
+import TodoManager from './components/TodoManager.vue';
 import { TodoItemClass } from './components/classes/TodoItemClass';
 
 const todos: Ref<Array<TodoItemClass>> = ref(
