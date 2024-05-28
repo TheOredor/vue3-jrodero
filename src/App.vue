@@ -4,7 +4,9 @@ import TodoManager from './components/TodoManager.vue';
 import HeaderApp from './components/Header.vue';
 import { TodoItemClass } from './components/classes/TodoItemClass';
 
-const todos: Ref<Array<TodoItemClass>> = ref(JSON.parse(localStorage.getItem('todoList') || '[]'));
+const todos: Ref<Array<TodoItemClass>> = ref(
+    JSON.parse(localStorage.getItem('todoList') || '[]').map((a: TodoItemClass) => new TodoItemClass(a.id, a.task, a.done))
+);
 const title: Ref<string> = ref('Vue3 JRodero Todo list');
 
 const completedTodos: ComputedRef<number> = computed(() => {
