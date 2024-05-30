@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { TodoItemClass, type TodoItemIterface } from '../classes/TodoItemClass';
 
-const props = defineProps({
-    todo: {
-        type: TodoItemClass,
-        required: true,
-    }
-});
+// const props = defineProps({
+//     todo: {
+//         type: TodoItemClass,
+//         required: true,
+//     }
+// });
+
+// const props = defineProps<{ todo: TodoItemIterface }>();
+
+type TodoProps = { todo: TodoItemIterface };
+const props = defineProps<TodoProps>();
 
 const emit = defineEmits<{
     (e: 'deleteTask', payload: number): void
