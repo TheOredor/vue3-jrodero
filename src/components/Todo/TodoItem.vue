@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TodoItemClass } from '../classes/TodoItemClass';
+import { TodoItemClass, type TodoItemIterface } from '../classes/TodoItemClass';
 
 const props = defineProps({
     todo: {
@@ -10,7 +10,7 @@ const props = defineProps({
 
 const emit = defineEmits<{
     (e: 'deleteTask', payload: number): void
-    (e: 'changeTaskStatus', payload: TodoItemClass): void
+    (e: 'changeTaskStatus', payload: TodoItemIterface): void
 }>();
 
 function changeTask(e: Event) {

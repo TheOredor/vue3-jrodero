@@ -2,10 +2,12 @@
 import { computed, ref, watch, type ComputedRef, type Ref } from 'vue';
 import HeaderApp from './components/Header.vue';
 import TodoManager from './components/TodoManager.vue';
-import { TodoItemClass } from './components/classes/TodoItemClass';
+// import { TodoItemClass } from './components/classes/TodoItemClass';
+import { type TodoItemIterface } from './components/classes/TodoItemClass';
 
-const todos: Ref<Array<TodoItemClass>> = ref(
-    JSON.parse(localStorage.getItem('todoList') || '[]').map((a: TodoItemClass) => new TodoItemClass(a.id, a.task, a.done))
+const todos: Ref<Array<TodoItemIterface>> = ref(
+    // JSON.parse(localStorage.getItem('todoList') || '[]').map((a: TodoItemClass) => new TodoItemClass(a.id, a.task, a.done))
+    JSON.parse(localStorage.getItem('todoList') || '[]')
 );
 const title: Ref<string> = ref('Vue3 JRodero Todo list');
 
@@ -24,11 +26,11 @@ watch(todos.value, () => {
 }, { deep: true, immediate: true }
 );
 
-function handleAddTask(todo: TodoItemClass) {
+function handleAddTask(todo: TodoItemIterface) {
     todos.value.push(todo);
 }
 
-function handleChangeTaskStatus(todo: TodoItemClass) {
+function handleChangeTaskStatus(todo: TodoItemIterface) {
     todo.done = !todo.done;
 }
 

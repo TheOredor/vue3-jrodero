@@ -1,23 +1,24 @@
 <script setup lang="ts">
 import TodoForm from './Todo/TodoForm.vue';
 import TodoItem from './Todo/TodoItem.vue';
-import { TodoItemClass } from './classes/TodoItemClass';
+// import { TodoItemClass } from './components/classes/TodoItemClass';
+import { type TodoItemIterface } from './classes/TodoItemClass';
 
 const props = defineProps({
-    todos: Array<TodoItemClass>
+    todos: Array<TodoItemIterface>
 });
 
 const emit = defineEmits<{
-    (e: 'addTask', payload: TodoItemClass): void,
-    (e: 'changeTaskStatus', payload: TodoItemClass): void
+    (e: 'addTask', payload: TodoItemIterface): void,
+    (e: 'changeTaskStatus', payload: TodoItemIterface): void
     (e: 'deleteTask', payload: number): void,
 }>();
 
-function handleAddTask(todo: TodoItemClass) {
+function handleAddTask(todo: TodoItemIterface) {
     emit('addTask', todo);
 }
 
-function handleChangeTaskStatus(todo: TodoItemClass) {
+function handleChangeTaskStatus(todo: TodoItemIterface) {
     emit('changeTaskStatus', todo);
 }
 

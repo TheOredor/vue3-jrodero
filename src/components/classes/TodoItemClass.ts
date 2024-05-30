@@ -1,4 +1,4 @@
-export class TodoItemClass {
+export class TodoItemClass implements TodoItemIterface {
     id: number;
     task: string;
     done: boolean;
@@ -8,4 +8,10 @@ export class TodoItemClass {
         this.task = task;
         this.done = done;
     }
+}
+
+export interface TodoItemIterface {
+    id: number;
+    task: string;
+    done: boolean;
 }
